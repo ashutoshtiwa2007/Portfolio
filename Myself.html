@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RACHIT // Cyberpunk CLI Terminal</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bios">
+    <div class="lines"></div>
+    <div class="terminal">
+        <header class="thead">
+            <div class="hl">
+                <span class="sid">RACHIT OS // KERNEL v0.1</span>
+                <span class="srole">USER:RACHIT</span>
+            </div>
+            <div class="hr">
+                <span class="status-indicator"><span class="blinkdot">●</span> READY </span>
+                <span class="system-loc">BASE: ATHLETE & BUILDER</span>
+            </div>
+        </header>
+        <nav class="commands" aria-label="Quick Command Protocols">
+            <span class="labels"> QUICK ACCESS </span>
+            <button class="cmd-chip" data-cmd="cat about.txt">[ 1 ] cat about.txt</button>
+            <button class="cmd-chip" data-cmd="ls /interests">[ 2 ] ls /interests</button>
+            <button class="cmd-chip" data-cmd="cat sports.log">[ 3 ] cat sports.log</button>
+            <button class="cmd-chip" data-cmd="cat projects.dat">[ 4 ] cat projects.dat</button>
+            <button class="cmd-chip" data-cmd="history">[ 5 ] history</button>
+            <button class="cmd-chip" data-cmd="./contacts.sh">[ 6 ] ./contacts.sh</button>
+            <button class="cmd-chip" data-cmd="clear">[ 7 ] clear</button>
+        </nav>
+        <main id="terminal" class="terminal" tabindex="0">
+            <div id="output" class="output">
+                <pre class="assibanner">
+                    ██████╗  █████╗  ██████╗██╗  ██╗██╗████████╗
+                    ██╔══██╗██╔══██╗██╔════╝██║  ██║██║╚══██╔══╝
+                    ██████╔╝███████║██║     ███████║██║   ██║   
+                    ██╔══██╗██╔══██║██║     ██╔══██║██║   ██║   
+                    ██║  ██║██║  ██║╚██████╗██║  ██║██║   ██║   
+                    ╚═╝  ╚═╝╚═╝  ╚═╝ ╚═════╝╚═╝  ╚═╝╚═╝   ╚═╝
+
+                </pre>
+                <p class="msg">SYSTEM INITIALIZED: WELCOME TO RACHIT'S TERMINAL</p>
+                <p class="msg">ROLLER SKATES ● CRICKETER ● BASKETBALL ● HISTORY BUFF ● CODER </p>
+                <p class="msg">TYPE <span class="highlight">help</span>OR CLICK ANY COMMAND BUTTON ABOVE TO BEGIN</p>
+                <br>
+            </div>
+        </main>
+        <div class="tbar">
+            <label for="cliinput" class="promptlabel">rachit@base:~$</label>
+            <input type="text" id="cliinput" class="cliinput" autocomplete="off" spellcheck="false" autofocus>
+        </div>
+    </div>
+    <script src="script.js"></script>
+    
+</body>
+</html>
