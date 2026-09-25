@@ -2,11 +2,14 @@
     --bg-void: black;
     --terminal-bg: black;
     --text-primary: lime;
+    --text-highlight: palegreen;
+    --text-accent: yellow;
     --text-dim: forestgreen;
     --text-gold: gold;
     --text-alert:crimson;
     --border-bright: limegreen;
     --border-dark: darkgreen;
+    --border-dim: darkgreen;
     --font-retro: 'VT323', monospace;
 }
 
@@ -25,7 +28,7 @@ html,body{
     font-size: 1.35rem;
     line-height: 1.3;
     overflow: hidden;
-    -webkit-font-something: none;
+    -webkit-font-smoothing: none;
 }
 
 .lines {
@@ -51,7 +54,7 @@ html,body{
     max-width: 1050px;
     height: 94vh;
     margin: 3vh auto;
-    background: var(--terminal-bright);
+    background: var(--terminal-bg);
     border: 3px solid var(--border-bright);
     box-shadow:
     0 0 15px var(--border-dark),
@@ -61,7 +64,7 @@ html,body{
     padding: 16px;
 }
 
-.thread{
+.thead{
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -172,8 +175,8 @@ main.terminal::-webkit-scrollbar-thumb{
     margin-top: 8px;
 }
 
-.primptlabel{
-    color: var(--text-htighlight);
+.promptlabel{
+    color: var(--text-highlight);
     font-weight: bold;
     white-space: nowrap;
 }
@@ -222,7 +225,7 @@ main.terminal::-webkit-scrollbar-thumb{
 
 .project-tag{
     color: var(--text-gold);
-    font-weight: gold;
+    font-weight: bold;
 }
 
 .project-status{
@@ -245,9 +248,9 @@ main.terminal::-webkit-scrollbar-thumb{
 }
 
 .project-roles{
-    display:flex;
+    display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 12 px;
+    gap: 12px;
     margin-bottom: 12px;
 }
 
@@ -311,7 +314,7 @@ main.terminal::-webkit-scrollbar-thumb{
 .retro-link:hover{
     background: white;
     color: black;
-    box-shadow: 0 0 8px line;
+    box-shadow: 0 0 8px lime;
 
 }
 
@@ -342,9 +345,9 @@ main.terminal::-webkit-scrollbar-thumb{
 }
 
 .wizard-receipt-title{
-    color: var(--text-hightlight);
+    color: var(--text-highlight);
     font-weight:bold;
-    border-bottom: 1px solid var(--bootom-dim);
+    border-bottom: 1px solid var(--border-dim);
     padding-bottom: 4px;
     margin-bottom: 8px;
 }

@@ -6,15 +6,30 @@ document.addEventListener('DOMContentLoaded',()=>{
     const scrollContainer = document.querySelector('main.terminal');
     const quickChips= document.querySelectorAll('.cmd-chip');
 
-    const AudioContent = window.AudioContext || window.webkitAudioContext;
+    const state ={
+        history: [],
+        historyIndex: -1,
+        inContactMode: false,
+        contactStep: 0,
+        contactData:{
+            name:'',
+            email:'',
+            message: ''
+        }
+
+    };
+
+    const AudioContext = window.AudioContext || window.webkitAudioContext;
     let audioCtx = null;
+
+    const promptLabel = document.querySelector('.promptlabel');
 
     function initAudio(){
         if(!audioCtx){
             audioCtx =new AudioContext();
         }
         if (audioCtx.state === 'suspended') {
-            audio.Ctx.resume();
+            audioCtx.resume();
         }
     }
     
@@ -28,14 +43,14 @@ document.addEventListener('DOMContentLoaded',()=>{
             oscillator.type = waveType;
             oscillator.frequency.setValueAtTime(frequency,audioCtx.currentTime);
 
-            gainNode.gain.setValueAtTime(0.4,audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.04,audioCtx.currentTime);
             gainNode.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime + duration);
 
             oscillator.connect(gainNode);
             gainNode.connect(audioCtx.destination);
 
             oscillator.start();
-            oscillator.stop(audiCtx.currentTime+duration);
+            oscillator.stop(audioCtx.currentTime+duration);
         }catch(err){
 
         }
@@ -43,12 +58,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const soundBeep =() => playTone(880,'square',0.04);
     const soundExecute =() => playTone(520,'square',0.08);
+    const soundSuccess = ()=>{
+        playTone(440,'square',0.08);
+        setTimeout(()=> playTone(660,'square',0.12),90);
+    };
     const soundError =()=> playTone(140,'sawtooth',0.22);
 
     const COMMAND_REGISTRY ={
         'cat about.txt':`
         <div class="panel-box">
-        <div> class="panel-title">[OPERATOR DOSSIER: RACHIT]</div>
+        <div class="panel-title">[OPERATOR DOSSIER: RACHIT]</div>
         -------------------------------------------------------------
         CLASS   : Student, Athlete & Coder
         FIELDS  : Roller Skating, Cricket, Basketball, World History
@@ -74,15 +93,16 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         'cat projects.dat': `
       <div class="project-card">
-      <div class="project-header">
-      <span class="project-tag">[FEATURED SYSTEM 01]</span>
-      <span class="project-status">• DEPLOYED / OPERATIONAL</span>
-      </div>
-      <div class="project-title">RECUIT & CONNECT // TWO-SIDED JOB PLATFORM</div>
-      <p class="project-summary">
-      A sull full featured web portal engineered to eliminate friction between candidates seeking opportunities and hiring managers searchingfor talent.
-      </p>
-      <div class="project-roles">
+        <div class="project-header">
+          <span class="project-tag">[FEATURED SYSTEM 01]</span>
+          <span class="project-status">● DEPLOYED / OPERATIONAL</span>
+        </div>
+        <div class="project-title">RECRUIT & CONNECT // TWO-SIDED JOB PLATFORM</div>
+        <p class="project-summary">
+          A full-featured web portal engineered to eliminate friction between candidates seeking opportunities and hiring managers searching for talent.
+        </p>
+
+        <div class="project-roles">
           <div class="role-box">
             <div class="role-title">FOR APPLICANTS / USERS:</div>
             • Search and filter active job openings<br>
@@ -111,7 +131,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>
       </div>
 
-      
       <div class="project-card">
         <div class="project-header">
           <span class="project-tag">[EXPERIMENT 02]</span>
@@ -121,13 +140,11 @@ document.addEventListener('DOMContentLoaded',()=>{
         <p class="project-summary">
           Interactive historical encyclopedia built to visualize decisive military campaigns, empire frontiers, and major inventions on an interactive timeline.
         </p>
-
         <div class="tech-badges">
           <span class="badge">HTML5</span>
           <span class="badge">CSS ANIMATIONS</span>
           <span class="badge">HISTORY ARCHIVE</span>
         </div>
-
         <div class="project-actions">
           <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ SOURCE CODE ↗ ]</a>
         </div>
@@ -141,13 +158,6 @@ document.addEventListener('DOMContentLoaded',()=>{
         • Technological Revolutions that reshaped the world
         </div>`,
 
-        './contacts.sh':`
-        <div class="panel-box">
-        <div class="panel-title"<[COMMUNICATION PROTOCOL]</div>
-        Want to talk about sports,history, or building cool web tools?
-        STATUS: Open for student collaborations and hackathons!
-        DIRECT: Reach out via student email or Github repository
-        </div>`,
 
         'help':`
         AVAILABLE COMMANDS:
@@ -171,53 +181,135 @@ document.addEventListener('DOMContentLoaded',()=>{
         scrollContainer.scrollTop = scrollContainer.scrollHeight;
     }
 
+    function startContactWizard(){
+        state.inContactMode = true;
+        state.contactStep= 1;
+        state.contactData={name:'',email:'',message:''};
+
+        writeToTerminal(`
+            <div class="contact-wizard-box">
+            <div class="wizard-title">&gt;&gt; INITIATING TRANSMISSION CHANNEL [FREQ: 144.8MHz]</div>
+            <p> You can send a direct dispatch to Rachit. Type your response and hit enter.</p>
+            <p style="color : var(--text-dim); font-size: 1.15rem;">(Type 'cancel' anytime to abort)</p>
+            </div>
+            <p class="wizard-step">&gt;&gt; [STEP 1/3] ENTER SENDER IDENTITY (YOUR NAME):</p>
+            `);
+        promptLabel.textContent ='sender-name:~$';
+        soundExecute();
+
+    }
+
+    function handleWizardInput(rawInput){
+        const input = rawInput.trim();
+        if (input.toLowerCase()==='cancel'){
+            state.inContactMode= false;
+            state.contactStep=0;
+            promptLabel.textContent='rachit@base:~$';
+            writeToTerminal(`<p style="color: var(--text-alert);">&gt;&gt;TRANSMISSION ABORTED.</p>`);
+            soundError();
+
+            return;
+        }
+
+        if (input===''){
+            writeToTerminal(`<p style="color: var(--text-alert);">&gt;&gt; FIELD CANNOT BE EMPTY. PLEASE ENTER DATA:</p>`);
+            soundError();
+            return;
+        }
+
+        if(state.contactStep===1){
+            state.contactData.name = input;
+            state.contactStep= 2;
+            writeToTerminal(`<p><span class="promptlabel">sender-name:~$</span> ${input}</p>`);
+            writeToTerminal(`<p class="wizard-step">&gt;&gt; [STEP 2/3] ENTER RETURN FREQUENCY (YOUR EMAIL):</p>`);
+            promptLabel.textContent='sender-email:~$';
+            soundExecute();
+        }else if(state.contactStep==2){
+            state.contactData.email=input;
+            state.contactStep=3;
+            writeToTerminal(`<p><span class="promptlabel">sender-email:~$</span> ${input}</p>`);
+            writeToTerminal(`<p class="wizard-step">&gt;&gt; [STEP 3/3] ENTER TRANSMISSION PAYLOAD (MESSAGE):</p>`);
+            promptLabel.textContent = 'message:~$';
+            soundExecute();
+
+        }else if(state.contactStep ===3){
+            state.contactData.message =input;
+            writeToTerminal(`<p><span class="promptlabel">message:~$</span> ${input}</p>`);
+
+      writeToTerminal(`
+        <div class="wizard-receipt">
+          <div class="wizard-receipt-title">✔ TRANSMISSION CONFIRMED // PACKET ARCHIVED</div>
+          <p><strong>FROM    :</strong> ${state.contactData.name}</p>
+          <p><strong>REPLY TO:</strong> ${state.contactData.email}</p>
+          <p><strong>PAYLOAD :</strong> "${state.contactData.message}"</p>
+          <br>
+          <p style="color: var(--text-highlight);">&gt;&gt; STATUS 200 OK: Message dispatched to Rachit. Expect a reply soon!</p>
+        </div>
+      `);
+
+      state.inContactMode=false;
+      state.contactStep=0;
+      promptLabel.textContent='rachit@base:~$';
+      soundSuccess();
+        }
+        
+    }
+
     function processCommand(rawInput){
         const cleanCmd =rawInput.trim().toLowerCase();
-        writeToTerminal(`<p><span class="promptlabel">rachit@base:~$</span> ${rawinput}</p>`);
+        writeToTerminal(`<p><span class="promptlabel">rachit@base:~$</span> ${rawInput}</p>`);
         
         if (cleanCmd === ''){
             return;
         }
 
+        state.history.push(rawInput);
+        state.historyIndex = state.history.length;
+
         if(cleanCmd === 'clear'){
-            outArea.innerHTML ='';
+            outputArea.innerHTML ='';
             soundExecute();
+            return;
+        }
+
+        if (cleanCmd === './contacts.sh'|| cleanCmd ==='contact'|| cleanCmd==='./contacts.sh'){
+            startContactWizard();
             return;
         }
 
         let commandToExecute = cleanCmd;
         if (cleanCmd === 'projects') commandToExecute = 'cat projects.dat';
         if (cleanCmd === 'about') commandToExecute = 'cat about.txt';
-        if (cleanCmd === 'projects') commandToExecute = 'cat sports.log';
-        if (cleanCmd === 'projects') commandToExecute = './contacts.sh';
+        if (cleanCmd === 'sports') commandToExecute = 'cat sports.log';
 
         if (COMMAND_REGISTRY[commandToExecute]){
             writeToTerminal(COMMAND_REGISTRY[commandToExecute]);
-            soundExecute();
-        }
-
-
-        if (COMMAND_REGISTRY[cleanCmd]){
-            writeToTerminal(COMMAND_REGISTRY[cleanCmd]);
             soundExecute();
 
         }else{
             writeToTerminal(`
                 <p style="color: var(--text-alert);">
-                &gt;&gt; Command not found: "${rawinput}". Type <span class="highlight">help</span> for the command list.
+                &gt;&gt; Command not found: "${rawInput}". Type <span class="highlight">help</span> for the command list.
                 </p>
                 `);
-                soundExecute();
+                soundError();
             }
         }
+        
 
-        cliInput.addEventListener('keydown',(event) =>{
-            if(event.key==='Enter'){
-                processCommand(cliInput.value);
+        cliInput.addEventListener('keydown',(e) =>{
+            if(e.key==='Enter'){
+                const val =cliInput.value;
                 cliInput.value='';
+
+                if(state.inContactMode){
+                    handleWizardInput(val);
+                }else{
+                    processCommand(val);
+                }
             }
 
-            else if(e.key === 'ArrowUp'){
+            else if(!state.inContactMode && e.key === 'ArrowUp'){
                 e.preventDefault();
                 if (state.history.length > 0 && state.historyIndex>0){
                     state.historyIndex--;
@@ -226,7 +318,7 @@ document.addEventListener('DOMContentLoaded',()=>{
                 }
             }
 
-            else if(e.key === 'ArrowDown'){
+            else if(!state.inContactMode && e.key === 'ArrowDown'){
                 e.preventDefault();
                 if (state.historyIndex < state.history.length - 1){
                     state.historyIndex++;
@@ -241,14 +333,15 @@ document.addEventListener('DOMContentLoaded',()=>{
         
             quickChips.forEach((button) => {
                 button.addEventListener('click',()=>{
-                    const commandToRun = button.getAtrribute('data-cmd');
+                    if(state.inContactMode) return;
+                    const commandToRun = button.getAttribute('data-cmd');
                     cliInput.value='';
                     processCommand(commandToRun);
                 });
             });
 
             document.addEventListener('click',(event)=>{
-                if(!event.target.closest('.cmd-chip') && window.getSlection().tostring().length===0){
+                if(!event.target.closest('.cmd-chip') && window.getSelection().toString().length===0){
                     cliInput.focus();
                 }
                 });
