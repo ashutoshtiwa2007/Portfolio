@@ -6,6 +6,45 @@ document.addEventListener('DOMContentLoaded',()=>{
     const scrolllContainer = document.querySelector('main.terminal');
     const quickChips= document.querySelectorAll('.cmd-chip');
 
+    const AudioContent = window.AudioContext || window.webkitAudioContext;
+    let audioCtx = null;
+
+    function initAudio(){
+        if(!audioCtx){
+            audioCtx =new AudioContext();
+        }
+        if (audioCtx.state === 'suspended') {
+            audio.Ctx.resume();
+        }
+    }
+    
+    function playTone(frequency,waveType,duration){
+        initAudio();
+
+        try{
+            const oscillator = audioCtx.createOscillator();
+            const gainNode = audioCtx.createGain();
+
+            oscillator.type = waveType;
+            oscillator.frequency.setValueAtTime(frequency,audioCtx.currentTime);
+
+            gainNode.gain.setValueAtTime(0.4,audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.0001,audioCtx.currentTime + duration);
+
+            oscillator.connect(gainNode);
+            gainNode.connect(audioCtx.destination);
+
+            oscillator.start();
+            oscillator.stop(audiCtx.currentTime+duration);
+        }catch(err){
+
+        }
+    }
+
+    const soundBeep =() => playTone(880,'square',0.04);
+    const soundExecute =() => playTone(520,'square',0.08);
+    const soundError =()=> playTone(140,'sawtooth',0.22);
+
     const COMMAND_REGISTRY ={
         'cat about.txt':`
         <div class="panel-box">
@@ -94,18 +133,21 @@ document.addEventListener('DOMContentLoaded',()=>{
 
         if(cleanCmd === 'clear'){
             outArea.innerHTML ='';
+            soundExecute();
             return;
         }
 
         if (COMMAND_REGISTRY[cleanCmd]){
             writeToTerminal(COMMAND_REGISTRY[cleanCmd]);
+            soundExecute();
 
         }else{
             writeToTerminal(`
                 <p style="color: var(--text-alert);">
                 &gt;&gt; Command not found: "${rawinput}". Type <span class="highlight">help</span> for the command list.
                 </p>
-                `)
+                `);
+                soundExecute();
             }
         }
 
@@ -113,6 +155,27 @@ document.addEventListener('DOMContentLoaded',()=>{
             if(event.key==='Enter'){
                 processCommand(cliInput.value);
                 cliInput.value='';
+            }
+
+            else if(e.key === 'ArrowUp'){
+                e.preventDefault();
+                if (state.history.length > 0 && state.historyIndex>0){
+                    state.historyIndex--;
+                    cliInput.value = state.history[state.historyIndex];
+                    soundBeep();
+                }
+            }
+
+            else if(e.key === 'ArrowDown'){
+                e.preventDefault();
+                if (state.historyIndex < state.history.length - 1){
+                    state.historyIndex++;
+                    cliInput.value = state.history[state.historyIndex];
+                    soundBeep();
+                }else{
+                    state.historyIndex=state.history.length;
+                    cliInput.value ='';
+                }
             }
             });
         
