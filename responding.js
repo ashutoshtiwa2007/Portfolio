@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded',()=>{
 
     const cliInput = document.getElementById('cliinput');
     const outputArea = document.getElementById('output');
-    const scrolllContainer = document.querySelector('main.terminal');
+    const scrollContainer = document.querySelector('main.terminal');
     const quickChips= document.querySelectorAll('.cmd-chip');
 
     const AudioContent = window.AudioContext || window.webkitAudioContext;
@@ -73,17 +73,65 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>`,
 
         'cat projects.dat': `
-        <div class="panel-box">
-        <div class="panel-title">[PROJECT: JOB & RECUITER PLATFORM]</div>
-        =================================================================
-        PROJECT  : Employment & Opportunity Exchange Portal
-        FUNCTION : Two-sided web app connecting condidates with recuiters.
-        FOR USERS: search open roles, read criteria, and submit applications.
-        RECUITER : POST OPENINGS and cite hiring specifications.
-        TECH     : HTML,CSS,JavaScript.
-        STATUS   : Prototype completed & operational!
-        ==================================================================
-        </div>`,
+      <div class="project-card">
+      <div class="project-header">
+      <span class="project-tag">[FEATURED SYSTEM 01]</span>
+      <span class="project-status">• DEPLOYED / OPERATIONAL</span>
+      </div>
+      <div class="project-title">RECUIT & CONNECT // TWO-SIDED JOB PLATFORM</div>
+      <p class="project-summary">
+      A sull full featured web portal engineered to eliminate friction between candidates seeking opportunities and hiring managers searchingfor talent.
+      </p>
+      <div class="project-roles">
+          <div class="role-box">
+            <div class="role-title">FOR APPLICANTS / USERS:</div>
+            • Search and filter active job openings<br>
+            • Inspect prerequisite skills & criteria<br>
+            • Submit applications directly through the UI
+          </div>
+          <div class="role-box">
+            <div class="role-title">FOR RECRUITERS & FIRMS:</div>
+            • Create and publish new vacancy notices<br>
+            • Cite key qualifications & job responsibilities<br>
+            • Manage incoming applicant submissions
+          </div>
+        </div>
+
+        <div class="tech-badges">
+          <span class="badge">HTML5</span>
+          <span class="badge">CSS3 FLEXBOX/GRID</span>
+          <span class="badge">VANILLA JS</span>
+          <span class="badge">DOM MANIPULATION</span>
+          <span class="badge">FORM HANDLING</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ SOURCE CODE ↗ ]</a>
+          <a href="#" class="retro-link" onclick="alert('Launching live demo...'); return false;">[ LIVE DEMO ↗ ]</a>
+        </div>
+      </div>
+
+      
+      <div class="project-card">
+        <div class="project-header">
+          <span class="project-tag">[EXPERIMENT 02]</span>
+          <span class="project-status">● PROTOTYPE</span>
+        </div>
+        <div class="project-title">ANCIENT BATTLES & CIVILIZATIONS // TIMELINE SIMULATOR</div>
+        <p class="project-summary">
+          Interactive historical encyclopedia built to visualize decisive military campaigns, empire frontiers, and major inventions on an interactive timeline.
+        </p>
+
+        <div class="tech-badges">
+          <span class="badge">HTML5</span>
+          <span class="badge">CSS ANIMATIONS</span>
+          <span class="badge">HISTORY ARCHIVE</span>
+        </div>
+
+        <div class="project-actions">
+          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ SOURCE CODE ↗ ]</a>
+        </div>
+      </div>`,
         
         'history':`
         <div class="panel-box">
@@ -136,6 +184,18 @@ document.addEventListener('DOMContentLoaded',()=>{
             soundExecute();
             return;
         }
+
+        let commandToExecute = cleanCmd;
+        if (cleanCmd === 'projects') commandToExecute = 'cat projects.dat';
+        if (cleanCmd === 'about') commandToExecute = 'cat about.txt';
+        if (cleanCmd === 'projects') commandToExecute = 'cat sports.log';
+        if (cleanCmd === 'projects') commandToExecute = './contacts.sh';
+
+        if (COMMAND_REGISTRY[commandToExecute]){
+            writeToTerminal(COMMAND_REGISTRY[commandToExecute]);
+            soundExecute();
+        }
+
 
         if (COMMAND_REGISTRY[cleanCmd]){
             writeToTerminal(COMMAND_REGISTRY[cleanCmd]);

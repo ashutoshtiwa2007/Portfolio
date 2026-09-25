@@ -203,4 +203,148 @@ main.terminal::-webkit-scrollbar-thumb{
     font-weight: bold;
 }
 
+.project-card{
+    border: 2px solid var(--border-bright);
+    padding: 14px 16px;
+    margin: 12px 0;
+    background: rgba(0, 30, 0, 0.35);
+    box-shadow: 0 0 10px rgba(0, 255, 0,0.1);
+}
 
+.project-header{
+    display: flex;
+    justify-content: space-between;
+    align-items:center;
+    border-bottom: 1px dashed var(--border-dim);
+    padding-bottom: 6px;
+    margin-bottom: 10px;
+}
+
+.project-tag{
+    color: var(--text-gold);
+    font-weight: gold;
+}
+
+.project-status{
+    color: var(--text-highlight);
+    font-size: 1.1rem;
+}
+
+.project-title{
+    color: var(--text-highlight);
+    font-size: 1.45rem;
+    margin-bottom: 6px;
+    font-weight: bold;
+}
+
+.project-summary{
+    color: var(--text-primary);
+    margin-bottom: 12px;
+    font-size: 1.25rem;
+
+}
+
+.project-roles{
+    display:flex;
+    grid-template-columns: 1fr 1fr;
+    gap: 12 px;
+    margin-bottom: 12px;
+}
+
+@media(max-width: 650px){
+    .project-roles{
+        grid-template-columns: 1fr;
+    }
+}
+
+.role-box{
+    border: 1px solid var(--border-dim);
+    padding: 8px 10px;
+    background: black;
+}
+
+.roles-title{
+    color: var(--text-accent);
+    padding: 8px 10px;
+    background: black;
+}
+
+.role-title{
+    color: var(--text-accent);
+    font-weight: bold;
+    margin-bottom: 4px;
+}
+
+.tech-badges{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin: 10px 0 14px 0;
+}
+
+.badge{
+    background: black;
+    color: var(--text-highlight);
+    border: 1px solid var(--border-bright);
+    padding: 1px 6px;
+    font-size: 1.05rem;
+}
+
+.project-actions{
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.retro-link{
+    display: inline-block;
+    color: black;
+    background: var(--text-primary);
+    text-decoration: none;
+    font-weight: bold;
+    padding: 3px 10px;
+    border: 1px solid var(--border-bright);
+    font-size: 1.15rem;
+    transition: all 0.1s ease;
+}
+
+.retro-link:hover{
+    background: white;
+    color: black;
+    box-shadow: 0 0 8px line;
+
+}
+
+.contact-wizard-box{
+    border: 1px dashed var(--border-bright);
+    padding: 12px 16px;
+    margin: 10px 0;
+    background: rgba(0,40,0,0.25);
+}
+
+.wizard-title{
+    color: var(--text-gold);
+    font-weight: bold;
+    margin-bottom: 6px;
+}
+
+.wizard-step{
+    color: var(--text-accent);
+    margin-bottom: 6px;
+}
+
+.wizard-receipt{
+    border: 2px solid var(--border-bright);
+    padding: 12px;
+    margin-top: 10px;
+    background: black;
+
+}
+
+.wizard-receipt-title{
+    color: var(--text-hightlight);
+    font-weight:bold;
+    border-bottom: 1px solid var(--bootom-dim);
+    padding-bottom: 4px;
+    margin-bottom: 8px;
+}
