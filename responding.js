@@ -174,11 +174,12 @@ document.addEventListener('DOMContentLoaded',()=>{
     };
 
     function writeToTerminal(htmlContent){
-        const entry =document.createElement('div');
+        const entry = document.createElement('div');
         entry.innerHTML = htmlContent;
         outputArea.appendChild(entry);
 
-        scrollContainer.scrollTop = scrollContainer.scrollHeight;
+        
+        scrollContainer.scrollTop = 0;
     }
 
     function startContactWizard(){
