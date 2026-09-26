@@ -49,11 +49,6 @@ Aliases like `projects`, `sports`, `about`, and `contact` also work directly.
 
 No build steps, package managers, or frameworks required. Run it anywhere with a modern web browser.
 
-### 1. Clone the repository
-```bash
-git clone [https://github.com/ashutoshtiwa2007/Portfolio.git](https://github.com/ashutoshtiwa2007/Portfolio.git)
-cd Portfolio
-
 ## What I Learned
 
 - Built custom terminal layouts.
@@ -63,3 +58,9 @@ cd Portfolio
 - Managed user input steps.
 - Fixed tricky JavaScript typos.
 - Synced styles with code.
+
+### 1. Clone the repository
+```bash
+git clone [https://github.com/ashutoshtiwa2007/Portfolio.git](https://github.com/ashutoshtiwa2007/Portfolio.git)
+cd Portfolio
+
