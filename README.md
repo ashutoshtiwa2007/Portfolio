@@ -1,53 +1,49 @@
 # Rachit OS // Cyberpunk CLI Portfolio
 
-A personal developer portfolio built with the soul of a 1980s green-phosphor CRT mainframe. Designed with authentic scanline aesthetics, real-time 8-bit sound synthesis, monospaced typography, and a working interactive command-line interface.
+A 8 bit game inspired UI design portfolio inspired from old gameboy games and also to take a feel of hacker
 
-Built for Rachit -- multi-sport athlete (roller skating, cricket, basketball), ancient history enthusiast, and web builder.
+Built for Rachit --  athlete (roller skating, cricket, basketball), ancient history enthusiast, and web builder.
 
----
 ![My Diagram](portfolio.png)
 
 ## Features
 
-- Retro CRT Aesthetics: Scanline raster overlay, phosphor glow (`text-shadow`), custom monospace typography via the `VT323` font, and hard-edged cyber frames.
-- Two Ways to Navigate: Type raw terminal commands into the interactive prompt (`rachit@base:~$`) or click the quick-access chips pinned at the top.
-- Zero-Asset 8-Bit Audio: Synthesizes classic arcade bleeps, execution chimes, and error tones in real time using the browser's native Web Audio API -- no external audio files required.
-- Command History: Remembers past commands with Up Arrow and Down Arrow navigation, mirroring an authentic terminal experience.
-- Interactive Project Dossiers: Formatted cards displaying application workflows, role responsibilities (applicant vs. recruiter), and clickable repository links.
-- In-Terminal Contact Wizard: Type `./contacts.sh` to trigger a 3-step interactive message transmission protocol right inside the CLI output buffer but does not send a real msg to me currently.
+-Retro Aesthetics: A hacker like green and black CLI 
+-Audio: background and click sound that is inspired from 8 bit games on gameboy.
+-Keys: UP/DOWN keys that actually remember last typed commands.
+-Alias: like `projects`, `sports`, `about`, and `contact` also work directly.
+-contact: A 3 process to contact me that actually dont work please note it doesnt work made to look cool and also addded a note in the real world to  make you know this
 
 ---
 ![My Diagram](portfolio1.png)
 
-## Available Commands
+## Commands
 
-| Command | Action / Output |
-| :--- | :--- |
-| `cat about.txt` | Displays operator profile, background, and personal philosophy |
-| `ls /interests` | Lists athletic disciplines, historical focus areas, and developer skills |
-| `cat sports.log` | Deep dive into roller skating, cricket, and basketball metrics |
-| `cat projects.dat` | Architectural breakdown of the two-sided Job & Recruiter platform |
-| `history` | Research log covering classical empires and decisive battle tactics |
+| `cat about.txt` | Displays about me and my name in big capital letters looks cool |
+| `ls /interests` | My interests mentioned to look cool |
+| `cat sports.log` |  roller skating, cricket, and basketball |
+| `cat projects.dat` | A simple project that is under dev |
+| `history` | my interest in history |
 | `./contacts.sh` | Launches the interactive direct-dispatch transmission wizard , just a dummy not fully functional currently|
-| `clear` | Flushes the active output buffer |
-| `help` | Prints the full list of available system commands |
+| `clear` | clears everything |
+| `help` | list of useful commands |
 
-Aliases like `projects`, `sports`, `about`, and `contact` also work directly.
 
----
+
+
 ![My Diagram](portfolio2.png)
 
 ## Tech Stack
 
-- HTML5: Semantic architecture, ASCII art header containers, and retro HUD layout.
-- CSS3: Custom phosphor CSS variables, scanline gradient masks, flexbox HUD headers, and CSS grid role cards.
-- Vanilla JavaScript (ES6+): Pure DOM manipulation, state machines for wizard modes, arrow-key history buffers, and native `AudioContext` sound generation.
+- HTML5: Retro CLI layout and hacker like feel.
+- CSS3: Custom phosphor CSS variables, gradients, flexboard, grid
+- Vanilla JavaScript (ES6+):DOM, audio, UP/DOWN key rememberence, button and command responses
 
----
+
 
 ## Getting Started
 
-No build steps, package managers, or frameworks required. Run it anywhere with a modern web browser.
+Just a static webpage where i introduce my self in a cool hacker like manner. Works on any modern browser just by running the html file.
 
 ## What I Learned
 
