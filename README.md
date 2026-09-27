@@ -2,7 +2,7 @@
 
 A personal developer portfolio built with the soul of a 1980s green-phosphor CRT mainframe. Designed with authentic scanline aesthetics, real-time 8-bit sound synthesis, monospaced typography, and a working interactive command-line interface.
 
-Built for Rachit -- an 8th-grade student, multi-sport athlete (roller skating, cricket, basketball), ancient history enthusiast, and web builder.
+Built for Rachit -- multi-sport athlete (roller skating, cricket, basketball), ancient history enthusiast, and web builder.
 
 ---
 ![My Diagram](portfolio.png)
