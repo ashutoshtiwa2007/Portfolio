@@ -8,17 +8,17 @@ Built for Rachit --  athlete (roller skating, cricket, basketball), ancient hist
 
 ## Features
 
--Retro Aesthetics: A hacker like green and black CLI 
--Audio: background and click sound that is inspired from 8 bit games on gameboy.
--Keys: UP/DOWN keys that actually remember last typed commands.
--Alias: like `projects`, `sports`, `about`, and `contact` also work directly.
--contact: A 3 process to contact me that actually dont work please note it doesnt work made to look cool and also addded a note in the real world to  make you know this
+- Retro Aesthetics: A hacker like green and black CLI 
+- Audio: background and click sound that is inspired from 8 bit games on gameboy.
+- Keys: UP/DOWN keys that actually remember last typed commands.
+- Alias: like `projects`, `sports`, `about`, and `contact` also work directly.
+- contact: A 3 process to contact me that actually dont work please note it doesnt work made to look cool and also addded a note in the real world to  make you know this
 
 ---
 ![My Diagram](portfolio1.png)
 
 ## Commands
-
+| :--- | ---: |
 | `cat about.txt` | Displays about me and my name in big capital letters looks cool |
 | `ls /interests` | My interests mentioned to look cool |
 | `cat sports.log` |  roller skating, cricket, and basketball |
