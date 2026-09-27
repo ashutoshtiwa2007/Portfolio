@@ -61,6 +61,8 @@ No build steps, package managers, or frameworks required. Run it anywhere with a
 
 ### 1. Clone the repository
 ```bash
-git clone [https://github.com/ashutoshtiwa2007/Portfolio.git](https://github.com/ashutoshtiwa2007/Portfolio.git)
-cd Portfolio
+git clone https://github.com/ashutoshtiwa2007/Portfolio.git
+
+Use a modern browser to run the html file and furhue run the project locally on your pc
+
 
