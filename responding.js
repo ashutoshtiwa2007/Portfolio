@@ -189,13 +189,18 @@ document.addEventListener('DOMContentLoaded',()=>{
         state.contactData={name:'',email:'',message:''};
 
         writeToTerminal(`
-            <div class="contact-wizard-box">
-            <div class="wizard-title">&gt;&gt; INITIATING TRANSMISSION CHANNEL [FREQ: 144.8MHz]</div>
-            <p> You can send a direct dispatch to Rachit. Type your response and hit enter.</p>
-            <p style="color : var(--text-dim); font-size: 1.15rem;">(Type 'cancel' anytime to abort)</p>
-            </div>
-            <p class="wizard-step">&gt;&gt; [STEP 1/3] ENTER SENDER IDENTITY (YOUR NAME):</p>
-            `);
+        <div class="wizard-receipt">
+          <div class="wizard-receipt-title">✔ TRANSMISSION CONFIRMED // PACKET ARCHIVED</div>
+          <p><strong>FROM    :</strong> ${state.contactData.name}</p>
+          <p><strong>REPLY TO:</strong> ${state.contactData.email}</p>
+          <p><strong>PAYLOAD :</strong> "${state.contactData.message}"</p>
+          <br>
+          <p style="color: var(--text-highlight);">&gt;&gt; STATUS: Message packet logged to session buffer.</p>
+          <p style="color: var(--text-gold); font-size: 1.15rem; margin-top: 8px;">
+            * NOTE: Real-time messaging feature coming soon.
+          </p>
+        </div>
+      `);
         promptLabel.textContent ='sender-name:~$';
         soundExecute();
 
