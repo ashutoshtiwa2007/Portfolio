@@ -18,7 +18,8 @@ Built for Rachit --  athlete (roller skating, cricket, basketball), ancient hist
 ![My Diagram](portfolio1.png)
 
 ## Commands
-| :--- | ---: |
+| Cmd | About |
+| :--- | :--- |
 | `cat about.txt` | Displays about me and my name in big capital letters looks cool |
 | `ls /interests` | My interests mentioned to look cool |
 | `cat sports.log` |  roller skating, cricket, and basketball |
