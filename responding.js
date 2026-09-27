@@ -246,10 +246,12 @@ document.addEventListener('DOMContentLoaded',()=>{
           <p><strong>REPLY TO:</strong> ${state.contactData.email}</p>
           <p><strong>PAYLOAD :</strong> "${state.contactData.message}"</p>
           <br>
-          <p style="color: var(--text-highlight);">&gt;&gt; STATUS 200 OK: Message dispatched to Rachit. Expect a reply soon!</p>
-          * NOTE: Real-time messaging feature coming soon currently i dont receive msgs as it does not have a real database.
-        </div>
-      `);
+          <p style="color: var(--text-highlight);">&gt;&gt; STATUS: Logged to local session buffer.</p>
+              <p style="color: var(--text-gold); font-size: 1.15rem; margin-top: 8px;">
+                * NOTE: Real-time messaging feature coming soon. This is currently a static frontend demonstration without an active database.
+              </p>
+            </div>
+            `);
 
       state.inContactMode=false;
       state.contactStep=0;

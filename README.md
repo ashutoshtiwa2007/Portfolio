@@ -21,7 +21,7 @@ Built for Rachit -- multi-sport athlete (roller skating, cricket, basketball), a
 
 ## Available Commands
 
-| Command |
+| Command | Action / Output |
 | :--- | :--- |
 | `cat about.txt` | Displays operator profile, background, and personal philosophy |
 | `ls /interests` | Lists athletic disciplines, historical focus areas, and developer skills |
@@ -62,7 +62,6 @@ No build steps, package managers, or frameworks required. Run it anywhere with a
 ### 1. Clone the repository
 ```bash
 git clone https://github.com/ashutoshtiwa2007/Portfolio.git
-
-Use a modern browser to run the html file and furhue run the project locally on your pc
-
+cd Portfolio
+```
 
