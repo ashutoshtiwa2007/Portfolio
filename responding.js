@@ -95,7 +95,7 @@ document.addEventListener('DOMContentLoaded',()=>{
       <div class="project-card">
         <div class="project-header">
           <span class="project-tag">[FEATURED SYSTEM 01]</span>
-          <span class="project-status">● DEPLOYED / OPERATIONAL</span>
+          <span class="project-status">● BROKEN PROJECT VAULT</span>
         </div>
         <div class="project-title">RECRUIT & CONNECT // TWO-SIDED JOB PLATFORM</div>
         <p class="project-summary">
@@ -125,9 +125,8 @@ document.addEventListener('DOMContentLoaded',()=>{
           <span class="badge">FORM HANDLING</span>
         </div>
 
-        <div class="project-actions">
-          <a href="pro.html" class="retro-link">[ SOURCE CODE ↗ ]</a>
-          <a href="pro.html" class="retro-link">[ LIVE DEMO ↗ ]</a>
+       <div class="project-actions">
+          <span class="blink-wip">&gt;&gt; [ WORK IN PROGRESS // REPOSITORY COMPILING ] &lt;&lt;</span>
         </div>
       </div>
 
@@ -145,9 +144,8 @@ document.addEventListener('DOMContentLoaded',()=>{
           <span class="badge">CSS ANIMATIONS</span>
           <span class="badge">HISTORY ARCHIVE</span>
         </div>
-        <div class="project-actions">
-         
-          <a href="pro.html" class="retro-link">[ SOURCE CODE ↗ ]</a>
+       <div class="project-actions">
+          <span class="blink-wip">&gt;&gt; [ WORK IN PROGRESS // REPOSITORY COMPILING ] &lt;&lt;</span>
         </div>
       </div>`,
         

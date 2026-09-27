@@ -351,3 +351,11 @@ main.terminal::-webkit-scrollbar-thumb{
     padding-bottom: 4px;
     margin-bottom: 8px;
 }
+
+.blink-wip {
+    color: var(--text-alert);
+    font-weight: bold;
+    font-size: 1.25rem;
+    letter-spacing: 1px;
+    animation: blink 1.2s infinite steps(1);
+}
