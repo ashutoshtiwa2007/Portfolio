@@ -14,7 +14,7 @@ Built for Rachit -- multi-sport athlete (roller skating, cricket, basketball), a
 - Zero-Asset 8-Bit Audio: Synthesizes classic arcade bleeps, execution chimes, and error tones in real time using the browser's native Web Audio API -- no external audio files required.
 - Command History: Remembers past commands with Up Arrow and Down Arrow navigation, mirroring an authentic terminal experience.
 - Interactive Project Dossiers: Formatted cards displaying application workflows, role responsibilities (applicant vs. recruiter), and clickable repository links.
-- In-Terminal Contact Wizard: Type `./contacts.sh` to trigger a 3-step interactive message transmission protocol right inside the CLI output buffer.
+- In-Terminal Contact Wizard: Type `./contacts.sh` to trigger a 3-step interactive message transmission protocol right inside the CLI output buffer but does not send a real msg to me currently.
 
 ---
 ![My Diagram](portfolio1.png)
@@ -28,7 +28,7 @@ Built for Rachit -- multi-sport athlete (roller skating, cricket, basketball), a
 | `cat sports.log` | Deep dive into roller skating, cricket, and basketball metrics |
 | `cat projects.dat` | Architectural breakdown of the two-sided Job & Recruiter platform |
 | `history` | Research log covering classical empires and decisive battle tactics |
-| `./contacts.sh` | Launches the interactive direct-dispatch transmission wizard |
+| `./contacts.sh` | Launches the interactive direct-dispatch transmission wizard , just a dummy not fully functional currently|
 | `clear` | Flushes the active output buffer |
 | `help` | Prints the full list of available system commands |
 
