@@ -126,8 +126,8 @@ document.addEventListener('DOMContentLoaded',()=>{
         </div>
 
         <div class="project-actions">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ SOURCE CODE ↗ ]</a>
-          <a href="#" class="retro-link" onclick="alert('Launching live demo...'); return false;">[ LIVE DEMO ↗ ]</a>
+          <a href="pro.html" class="retro-link">[ SOURCE CODE ↗ ]</a>
+          <a href="pro.html" class="retro-link">[ LIVE DEMO ↗ ]</a>
         </div>
       </div>
 
@@ -146,7 +146,8 @@ document.addEventListener('DOMContentLoaded',()=>{
           <span class="badge">HISTORY ARCHIVE</span>
         </div>
         <div class="project-actions">
-          <a href="https://github.com" target="_blank" rel="noopener noreferrer" class="retro-link">[ SOURCE CODE ↗ ]</a>
+         
+          <a href="pro.html" class="retro-link">[ SOURCE CODE ↗ ]</a>
         </div>
       </div>`,
         
@@ -245,6 +246,7 @@ document.addEventListener('DOMContentLoaded',()=>{
           <p><strong>PAYLOAD :</strong> "${state.contactData.message}"</p>
           <br>
           <p style="color: var(--text-highlight);">&gt;&gt; STATUS 200 OK: Message dispatched to Rachit. Expect a reply soon!</p>
+          * NOTE: Real-time messaging feature coming soon currently i dont receive msgs as it does not have a real database.
         </div>
       `);
 
